@@ -16,6 +16,7 @@ function App() {
                     <Route path="customers" element={<Blank />} />
                     <Route path="settings" element={<Blank />} />
                     <Route path="stats" element={<Blank />} />
+                    <Route path="list" element={<Blank />} />
                 </Route>
             </Routes>
         </BrowserRouter>
