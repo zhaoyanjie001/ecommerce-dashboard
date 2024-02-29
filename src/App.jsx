@@ -4,13 +4,15 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Blank from './pages/Blank'
 import List from './pages/List'
 import Dashboard from './pages/Dashboard'
+import Login from './components/login/Login'
 import MainLayout from './layout/MainLayout'
 
 function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<MainLayout />}>
+                <Route path="/" element={<Login />}>
+                {/* <Route path="/" element={<MainLayout />}></Route> */}
                     <Route index element={<Dashboard />} />
                     <Route path="orders" element={<Blank />} />
                     <Route path="products" element={<Blank />} />
