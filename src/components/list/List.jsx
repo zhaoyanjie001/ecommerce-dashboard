@@ -1,5 +1,6 @@
 import React from 'react'
 import './list.scss'
+import { List } from '@arco-design/web-react'
 
 const Box = props => {
     const className = {
@@ -15,4 +16,4 @@ const Box = props => {
     )
 }
 
-export default list
+export default List

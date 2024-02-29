@@ -17,7 +17,8 @@
     "web-vitals": "^2.1.0"
 
     ,"react-helmet": "6.1.0"
-
+    ,"@arco-design/web-react": "2.60.1"
+    
 
   },
   "scripts": {

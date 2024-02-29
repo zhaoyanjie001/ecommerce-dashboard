@@ -1,6 +1,7 @@
 import React from 'react'
 import Data from '../data/data.json';
 import Header from '../components/header/Header';
+
 const List = () => {
     const title = Data.data.header.title;
     const text = Data.data.header.text;
