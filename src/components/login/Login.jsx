@@ -33,7 +33,7 @@ export default class App extends Component {
               ) {
                 Message.success("登陆成功");
                 // 跳转到首页
-                // <Route path="/home" element={<MainLayout />}></Route>
+                 <Route path="/home" element={<MainLayout />}></Route>
                 // <Route path="list" element={<List />} />
                 // <Redirect from="/login" to="/list"></Redirect>
               }
