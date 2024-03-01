@@ -1,8 +1,9 @@
 import React, { Component} from "react";
 import Field from "./Field";
 import Button from "./Button";
+import Dashboard from '../../pages/Dashboard';
 import { Message } from "@arco-design/web-react";
-// import { Switch, Route, HashRouter, Redirect, Link } from 'react-router-dom';
+import { Switch, Route,Routes, HashRouter, Navigate, Link,BrowserRouter} from 'react-router-dom';
 import MainLayout from '../../layout/MainLayout';
 import List from '../list/List';
 export default class App extends Component {
@@ -11,7 +12,11 @@ export default class App extends Component {
 
 
   render() {
+
+    const {navigate} = this.props;
+
     return (
+      
       <div>
         <h2>登录页面</h2>
         <Field label="用户名" type="text" ref={this.username}></Field>
@@ -33,9 +38,20 @@ export default class App extends Component {
               ) {
                 Message.success("登陆成功");
                 // 跳转到首页
-                 <Route path="/home" element={<MainLayout />}></Route>
+                // <Route index element={<Dashboard />} />
+                // <Route path="/" element={<MainLayout />}></Route>
+                // <BrowserRouter>
+                //   <Routes>
+                //     <Route path="orders" element={<Dashboard />}></Route>
+                //   </Routes>
+                // </BrowserRouter>
+                //  <Route path="orders" element={<Dashboard />}></Route>
                 // <Route path="list" element={<List />} />
-                // <Redirect from="/login" to="/list"></Redirect>
+                
+                // navigate('list', {name: 'List'});
+                window.location.href = '/list';
+                // 强制刷新页面
+                window.location.reload();
               }
               // 处理登录逻辑
               console.log("登录");
