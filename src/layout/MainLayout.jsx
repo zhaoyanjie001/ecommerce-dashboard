@@ -1,21 +1,39 @@
-import React from 'react'
-import './main-layout.scss'
-import { Outlet } from 'react-router-dom'
-import Sidebar from '../components/sidebar/Sidebar'
-import TopNav from '../components/topnav/TopNav'
+import React, { Component } from "react";
+import "./main-layout.scss";
+import { Outlet, Route } from "react-router-dom";
+import Sidebar from "../components/sidebar/Sidebar";
+import TopNav from "../components/topnav/TopNav";
+import AppContext from "../AppContext";
 
-const MainLayout = () => {
+
+class MainLayout extends React.PureComponent {
+
+
+
+  render() {
     return (
-        <>
-            <Sidebar />
-            <div className="main">
-                <div className="main__content">
-                    <TopNav />
-                    <Outlet />
-                </div>
+      <>
+        
+        <AppContext.Consumer>
+          {
+            (value) => 
+            <div>
+                {console.log(value)}
+               
             </div>
-        </>
-    )
-}
+          }
+        </AppContext.Consumer>
 
-export default MainLayout
+
+        <Sidebar />
+        <div className="main">
+          <div className="main__content">
+            <TopNav />
+            <Outlet />
+          </div>
+        </div>
+      </>
+    );
+  }
+}
+export default MainLayout;

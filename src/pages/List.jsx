@@ -11,7 +11,7 @@ const List = () => {
             <div>
                 <Header></Header>
             </div>
-
+            {console.log(window.globalVariable)}
         </div>
         
         

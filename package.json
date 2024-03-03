@@ -19,6 +19,9 @@
     ,"react-helmet": "6.1.0"
     ,"@arco-design/web-react": "2.60.1"
     ,"react-navigation": "1.4.0"
+
+    ,"redux": "^4.1.0"
+    ,"redux-saga": "^0.16.2"
     
 
   },
