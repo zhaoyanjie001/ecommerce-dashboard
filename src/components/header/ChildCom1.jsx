@@ -6,6 +6,15 @@ class ChildCom1 extends React.Component {
   vTop(value) {
     this.props.onValue(value);
   }
+  componentWillReceiveProps(){
+    console.log("ChildCom1:componentWillReceiveProps");
+  }
+  componentWillUpdate(){
+    console.log("ChildCom1:componentWillUpdate");
+  }
+  componentDidUpdate(){
+    console.log("ChildCom1:componentDidUpdate");
+  }
   render() {
     return (
       <div>

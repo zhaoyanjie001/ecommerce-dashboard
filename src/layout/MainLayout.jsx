@@ -7,33 +7,31 @@ import AppContext from "../AppContext";
 
 
 class MainLayout extends React.PureComponent {
+  
 
 
-
-  render() {
-    return (
-      <>
-        
-        <AppContext.Consumer>
-          {
-            (value) => 
-            <div>
-                {console.log(value)}
-               
+    render() {
+        return (
+          <>
+            <AppContext.Consumer>
+              {
+                (value) => 
+                <div>
+                    {console.log(value)}
+                  
+                </div>
+              }
+            </AppContext.Consumer>
+            <Sidebar />
+            <div className="main">
+              <div className="main__content">
+                <TopNav />
+                <Outlet /> 
+              </div> 
             </div>
-          }
-        </AppContext.Consumer>
-
-
-        <Sidebar />
-        <div className="main">
-          <div className="main__content">
-            <TopNav />
-            <Outlet />
-          </div>
-        </div>
-      </>
-    );
-  }
+                  </>
+        );
+      }
+  
 }
 export default MainLayout;

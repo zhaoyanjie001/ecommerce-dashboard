@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route,Navigate } from "react-router-dom";
 import Blank from "./pages/Blank";
 import List from "./pages/List";
 import Login from "./components/login/Login";
+import Header from "./components/header/Header";
 import MainLayout from "./layout/MainLayout";
 import Dashboard from "./pages/Dashboard";
 import { Component } from "react";
@@ -30,8 +31,14 @@ class App extends Component {
     return (
         <BrowserRouter>
           <Routes>
-            {/* <Route path="login" element={<Login />} /> */}
-            {/* <Route path="/" element={<Navigate to="/login" /> }> */}
+            <Route path="/" element={<Header />} >
+              <Route index element={<Header />} /> 
+              <Route path="/home" element={<MainLayout />}>
+                <Route index element={<Dashboard />} /> 
+                <Route path="list" element={<List />} />
+              </Route>
+            </Route>
+            {/* <Route path="login" element={<Login />} />
             <Route path="/" element={<MainLayout />}>
               <Route index element={<Dashboard />} /> 
               <Route path="login" element={<Login />} />
@@ -41,7 +48,7 @@ class App extends Component {
               <Route path="settings" element={<Blank />} />
               <Route path="stats" element={<Blank />} />
               <Route path="list" element={<List />} />
-            </Route>
+            </Route> */}
           </Routes>
         </BrowserRouter>
       
