@@ -40,8 +40,8 @@ export default class App extends Component {
   }
   updateGlobalVariable(event) {
     
-    window.globalVariable = event.target.value;
-    console.log(window.globalVariable);
+    window.someValue1 = event.target.value;
+    console.log(window.someValue1);
   };
   render() {
     return (

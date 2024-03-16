@@ -7,9 +7,6 @@ import React from 'react';
 const someValue = '0';
 window.someValue1 = '';
 
-
-
-
 ReactDOM.render(
     // <React.StrictMode>
     <AppContext.Provider value={ someValue }>
