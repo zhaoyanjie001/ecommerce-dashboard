@@ -1,25 +1,21 @@
-import React, { Component, useContext } from "react";
+import React, { Component, useState } from "react";
 import Field from "./Field";
 import Button from "./Button";
-import Dashboard from "../../pages/Dashboard";
-import { Message } from "@arco-design/web-react";
-import {
-  Switch,
-  Route,
-  Routes,
-  HashRouter,
-  redirect,
-  Link,
-  History,
-  Navigate,
-} from "react-router-dom";
+import axios from "axios";
 import MainLayout from "../../layout/MainLayout";
-import List from "../list/List";
+import Dashboard from "../../pages/Dashboard";
+import { BrowserRouter,Navigate, Routes, Route,redirect,  } from "react-router-dom";
+const API_URL = "http://localhost:8080/api/auth/";
+export default class login extends Component {
+  
 
-export default class App extends Component {
   username = React.createRef();
   password = React.createRef();
-
+  getUserInfo(username,password) {
+    console.log(username);
+    console.log(password);
+    return axios.post(API_URL + "login", { username, password });
+  }
   vTop(value) {
     console.log(value);
     // this.props.onValue(value);
@@ -30,7 +26,12 @@ export default class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { value: "" };
+    this.state = {
+      value: "",
+      content: "",
+      name: "",
+      password: "",
+    };
     // this.state = { value1: '' };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -51,15 +52,6 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        
-        {/* <AppContext.Consumer>
-          {
-            (value) => 
-            <div>
-                {console.log(value)}
-            </div>
-          }
-        </AppContext.Consumer> */}
 
         <h2>登录页面</h2>
         <Field label="用户名" type="text" ref={this.username}></Field>
@@ -69,27 +61,61 @@ export default class App extends Component {
           <Button
             type="button"
             value="登录"
-            event={() => {
-              // console.log(
-              //  this.props,
-              //   this.username.current.state.value,
-              //   this.password.current.state.value
-              // );
+            event={ async () => {
+              this.getUserInfo(this.username.current.state.value,this.password.current.state.value).then(
+                (response) => {
+                  this.setState({
+                    content:
+                      response.data["id"] +
+                      ":" +
+                      response.data["username"] +
+                      ":" +
+                      response.data["email"] +
+                      ":" +
+                      response.data["password"],
+                    name: response.data["username"],
+                    password: response.data["password"],
+                  });
+                  console.log("username:"+response.data["username"]);
+                  console.log("password:"+response.data["password"]);
 
-              if (
-                this.username.current.state.value === "123" &&
-                this.password.current.state.value === "123"
-              ) {
-                Message.success("登陆成功");
-                console.log("登陆成功");
-                // this.test("test");
-                // this.vTop('0');
-                <Navigate to="/login" />;
-              } else {
-                // 处理登录逻辑
-                console.log("登录");
-                <Navigate to="/login" />;
-              }
+                  if (
+                    this.username.current.state.value === this.state.name &&
+                    this.password.current.state.value === this.state.password
+                  ) {
+                    
+                    console.log("登陆成功");
+                    window.localStorage.setItem('loginState',"1");
+                    // <BrowserRouter>
+                    // <Routes>
+                    //   <Route path="/" element={<MainLayout />}>
+                    //     <Route index element={<Dashboard />} />
+                    //   </Route>
+                    // </Routes>
+                    // </BrowserRouter>
+                    console.log("localStorage:" + window.localStorage.getItem('loginState'));
+                    // <Navigate to="/" />;
+                    window.location.assign('http://localhost:3000');
+                    // <redirect to="/" />
+                  } else {
+                    // 处理登录逻辑
+                    console.log("登录");
+                    window.localStorage.setItem('loginState',"0");
+                    <Navigate to="/login" />;
+                  }
+                  
+                },
+                (error) => {
+                  this.setState({
+                    content:
+                      (error.response && error.response.data) ||
+                      error.message ||
+                      error.toString(),
+                  });
+                  console.log(error);
+                }
+              );
+              
             }}
           />
           <Button

@@ -1,18 +1,19 @@
 import React, { Component } from "react";
 import "./main-layout.scss";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Navigate } from "react-router-dom";
 import Sidebar from "../components/sidebar/Sidebar";
 import TopNav from "../components/topnav/TopNav";
-import AppContext from "../AppContext";
+
 
 class MainLayout extends React.PureComponent {
+
+
   loginTo(value) {
+    console.log("login:"+value);
     if (value === "1") {
       return (
         <>
-          <AppContext.Consumer>
-            {(value) => <div>{console.log(value)}</div>}
-          </AppContext.Consumer>
+
           <Sidebar />
           <div className="main">
             <div className="main__content">
@@ -23,11 +24,16 @@ class MainLayout extends React.PureComponent {
         </>
       );
     } else {
-      return <Link to="/login" />;
+      return (
+        
+          <Navigate to="/login" />
+
+        
+      );
     }
   }
   render() {
-    return <div>{this.loginTo("0")}</div>;
+    return <div>{this.loginTo(window.localStorage.getItem('loginState'))}</div>;
   }
 }
 export default MainLayout;

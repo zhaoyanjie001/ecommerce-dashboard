@@ -42,10 +42,10 @@ const sidebarNav = [
         text: 'List'
     },
     {
-        link: '/login',
+        link: '/logout',
         section: 'login',
         icon: <i className='bx bx-cog'></i>,
-        text: 'login'
+        text: 'logout'
     }
 ]
 
