@@ -20,7 +20,7 @@ const Sidebar = () => {
         setTimeout(() => {
             document.body.classList.remove('sidebar-open');
             if(window.localStorage.getItem('loginState') === "1") {
-                // document.querySelector('.main__content').style = '';
+                document.querySelector('.main__content').style = '';
             }
             
         }, 500);

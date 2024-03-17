@@ -11,11 +11,13 @@ import { Component } from "react";
 import Logout from "./components/logout/Logout";
 
 class App extends Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+  }
   getChildValue1(value) {
-    this.setState({
-      getChildValue1: value,
-    });
+    
   }
 
   goHome(value){
@@ -34,10 +36,8 @@ class App extends Component {
               <Route path="settings" element={<Blank />} />
               <Route path="stats" element={<Blank />} />
               <Route path="logout" element={<Logout />} />
-              
             </Route>
             <Route path="login" element={<Login />} />
-            <Route path="list" element={<List />} />
           </Routes>
         </BrowserRouter>
     );

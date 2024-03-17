@@ -6,8 +6,6 @@ import TopNav from "../components/topnav/TopNav";
 
 
 class MainLayout extends React.PureComponent {
-
-
   loginTo(value) {
     console.log("login:"+value);
     if (value === "1") {
@@ -25,10 +23,7 @@ class MainLayout extends React.PureComponent {
       );
     } else {
       return (
-        
-          <Navigate to="/login" />
-
-        
+          <Navigate to="/login" replace />
       );
     }
   }
