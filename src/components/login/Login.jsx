@@ -4,8 +4,11 @@ import Button from "./Button";
 import axios from "axios";
 import MainLayout from "../../layout/MainLayout";
 import Dashboard from "../../pages/Dashboard";
-import { BrowserRouter,Navigate, Routes, Route,redirect,  } from "react-router-dom";
+import { BrowserRouter,Navigate, Routes, Route,redirect, Location   } from "react-router-dom";
 const API_URL = "http://138.138.0.111:8080/api/auth/";
+
+
+
 export default class login extends Component {
   
 
@@ -26,6 +29,7 @@ export default class login extends Component {
 
   constructor(props) {
     super(props);
+    
     this.state = {
       value: "",
       content: "",
@@ -94,8 +98,9 @@ export default class login extends Component {
                     // </Routes>
                     // </BrowserRouter>
                     console.log("localStorage:" + window.localStorage.getItem('loginState'));
-                    // <Navigate to="/" replace />;
-                    window.location.assign('http://138.138.0.111:84');
+                    <Navigate to="/"  />;
+                    // window.location.href = '/';
+                    // window.location.assign('http://138.138.0.111:84');
                     // <redirect to="/" />
                   } else {
                     // 处理登录逻辑

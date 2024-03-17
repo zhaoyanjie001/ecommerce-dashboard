@@ -18,11 +18,8 @@ const Sidebar = () => {
     const closeSidebar = () => {
         document.querySelector('.main__content').style.transform = 'scale(1) translateX(0)'
         setTimeout(() => {
-            document.body.classList.remove('sidebar-open');
-            if(window.localStorage.getItem('loginState') === "1") {
-                document.querySelector('.main__content').style = '';
-            }
-            
+            document.body.classList.remove('sidebar-open')
+            document.querySelector('.main__content').style = ''
         }, 500);
     }
 
