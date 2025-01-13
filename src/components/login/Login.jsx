@@ -5,7 +5,7 @@ import axios from "axios";
 import MainLayout from "../../layout/MainLayout";
 import Dashboard from "../../pages/Dashboard";
 import { BrowserRouter,Navigate, Routes, Route,redirect, Location   } from "react-router-dom";
-const API_URL = "http://138.138.0.111:8080/api/auth/";
+const API_URL = "http://138.138.0.133:8087/api/books/";
 
 
 
@@ -17,7 +17,9 @@ export default class login extends Component {
   getUserInfo(username,password) {
     console.log(username);
     console.log(password);
-    return axios.post(API_URL + "login", { username, password });
+    console.log(API_URL + "booksInfoByPass");
+    return axios.get(API_URL + "booksInfoById?username="+username+"&password="+password);
+    //return axios.post(API_URL + "booksInfoByPass", { username, password });
   }
   vTop(value) {
     console.log(value);
@@ -98,10 +100,10 @@ export default class login extends Component {
                     // </Routes>
                     // </BrowserRouter>
                     console.log("localStorage:" + window.localStorage.getItem('loginState'));
-                    <Navigate to="/"  />;
-                    // window.location.href = '/';
+                    // <Navigate to="/"  />;
+                     window.location.href = '/';
                     // window.location.assign('http://138.138.0.111:84');
-                    // <redirect to="/" />
+                    //<redirect to="/" />
                   } else {
                     // 处理登录逻辑
                     console.log("登录");

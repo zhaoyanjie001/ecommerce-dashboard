@@ -9,7 +9,7 @@ export default class Logout extends Component {
   redirectToLogout() {
     window.localStorage.setItem("loginState", "0");
     console.log("localStorage:" + window.localStorage.getItem("loginState"));
-    window.location.assign("http://138.138.0.111:84");
+    window.location.assign("http://138.138.0.133:3000");
   }
   render() {
     return <div>{this.redirectToLogout()}</div>;
