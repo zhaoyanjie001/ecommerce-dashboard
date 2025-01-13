@@ -4,6 +4,7 @@ import Button from "./Button";
 import axios from "axios";
 import MainLayout from "../../layout/MainLayout";
 import Dashboard from "../../pages/Dashboard";
+import UserInfo from "../user-info/UserInfo";
 import { BrowserRouter,Navigate, Routes, Route,redirect, Location   } from "react-router-dom";
 const API_URL = "http://138.138.0.133:8087/api/books/";
 
@@ -82,6 +83,7 @@ export default class login extends Component {
                     name: response.data["username"],
                     password: response.data["password"],
                   });
+                  UserInfo.user = response.data;
                   console.log("username:"+response.data["username"]);
                   console.log("password:"+response.data["password"]);
 
@@ -92,6 +94,8 @@ export default class login extends Component {
                     
                     console.log("登陆成功");
                     window.localStorage.setItem('loginState',"1");
+                    window.localStorage.setItem('user',this.state.name);
+
                     // <BrowserRouter>
                     // <Routes>
                     //   <Route path="/" element={<MainLayout />}>
