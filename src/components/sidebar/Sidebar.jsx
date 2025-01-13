@@ -44,14 +44,7 @@ const Sidebar = () => {
                         </Link>
                     ))
                 }
-                <div className="sidebar__menu__item">
-                    <div className="sidebar__menu__item__icon">
-                        <i className='bx bx-log-out'></i>
-                    </div>
-                    <div className="sidebar__menu__item__txt">
-                        Logout
-                    </div>
-                </div>
+
             </div>
         </div>
     )

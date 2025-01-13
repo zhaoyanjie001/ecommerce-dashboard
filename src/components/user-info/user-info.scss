@@ -5,7 +5,7 @@
     background-color: $mainBg;
     border-radius: $borderRadius;
     height: 50px;
-    width: max-content;
+    width: 90px;
 
     &__img {
         --size: 50px;
@@ -27,4 +27,5 @@
             padding: 0 $mobileSpacing;
         }
     }
+
 }
